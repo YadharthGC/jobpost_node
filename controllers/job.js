@@ -168,8 +168,14 @@ exports.deluser = async (req, res, next) => {
   try {
     console.log(req.body);
     let del = await jobpost.findByIdAndDelete(req.body.e);
+    res.status(200).json({
+      message: "successfully deleted",
+    });
   } catch (error) {
     console.log(error);
+    res.status(500).json({
+      message: error,
+    });
   }
 };
 
